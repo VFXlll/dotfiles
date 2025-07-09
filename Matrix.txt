@@ -1,0 +1,35 @@
+# --- Основное ---
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="minimal"  # Лаконичная тема
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# --- Цвет подсказки ---
+autoload -U colors && colors
+setopt prompt_subst
+PROMPT='%F{green}%n@%m%f %F{cyan}%~%f %# '
+
+# --- Цвет командной истории, ошибок и т.п. ---
+export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+export CLICOLOR=1
+
+# --- Алиасы ---
+alias ll='ls -la'
+alias cls='clear'
+
+# --- История ---
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+# --- Удобство ---
+setopt autocd           # Переход без cd
+setopt correct          # Автоисправление опечаток
+setopt auto_pushd       # Пушд стек
+setopt append_history   # Аппенд в историю
+setopt share_history    # Общая история между сессиями
+
+# --- Python venv, если нужно ---
+# export WORKON_HOME=$HOME/.virtualenvs
+# source /usr/local/bin/virtualenvwrapper.sh
